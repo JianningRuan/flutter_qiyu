@@ -113,11 +113,11 @@ public class FlutterQiyuPlugin implements FlutterPlugin, MethodCallHandler {
     }
 
     private void registerApp(String appKey, String appName) {
+        config(context, appKey);
+        Log.d("FLUTTER_QIYU", "CONFIG END");
         Log.d("FLUTTER_QIYU", "START REGISTER");
         Unicorn.initSdk();
         Log.d("FLUTTER_QIYU", "START REGISTER END");
-        config(context, appKey);
-        Log.d("FLUTTER_QIYU", "CONFIG END");
         Unicorn.addUnreadCountChangeListener(unreadCountChangeListener, true);
     }
 

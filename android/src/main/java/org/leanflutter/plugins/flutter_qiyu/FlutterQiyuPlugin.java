@@ -113,8 +113,11 @@ public class FlutterQiyuPlugin implements FlutterPlugin, MethodCallHandler {
     }
 
     private void registerApp(String appKey, String appName) {
+        Log.d("FLUTTER_QIYU", "START REGISTER");
         Unicorn.initSdk();
+        Log.d("FLUTTER_QIYU", "START REGISTER END");
         config(context, appKey);
+        Log.d("FLUTTER_QIYU", "CONFIG END");
         Unicorn.addUnreadCountChangeListener(unreadCountChangeListener, true);
     }
 
@@ -257,11 +260,15 @@ public class FlutterQiyuPlugin implements FlutterPlugin, MethodCallHandler {
     }
 
     private void setUserInfo(MethodCall call, final Result result) {
+        Log.d("FLUTTER_QIYU", "START SET USERINFO");
         String userId = call.argument("userId");
+        Log.d("FLUTTER_QIYU", userId);
         String data = call.argument("data");
+        Log.d("FLUTTER_QIYU", data);
         YSFUserInfo userInfo = new YSFUserInfo();
         userInfo.userId = userId;
         userInfo.data = data;
+        Log.d("FLUTTER_QIYU", "START");
         Unicorn.setUserInfo(userInfo, new RequestCallback<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
